@@ -1,7 +1,7 @@
-# Write a custom rule for dbt_opiner
+import inflect
 from dbt_opiner.opinions.base_opinion import BaseOpinion
 from dbt_opiner.linter import LintResult, OpinionSeverity
-
+from dbt_opiner.file_handlers import SQLFileHandler
 
 class C001(BaseOpinion):
     def __init__(self):
@@ -13,11 +13,9 @@ class C001(BaseOpinion):
             applies_to_node_type="model",
         )
 
-    def _eval(self, file):
-        #        print(file.dbt_node)
-        #        exit()
-        if file.dbt_node.description:
-            if len(file.dbt_node.description) > 0:
+    def _eval(self, file: SQLFileHandler) -> LintResult:
+        if file.dbt_node.alias:
+            if self.is_plural(file.dbt_node.alias):
                 return LintResult(
                     file=file,
                     opinion_code=self.code,
@@ -32,3 +30,14 @@ class C001(BaseOpinion):
             severity=self.severity,
             message=f"Facts and dimensions {self.severity.value} be plural.",
         )
+    
+    @staticmethod
+    def is_plural(word):
+      """
+      For now use a simple check for s at the end of the word.
+      In the future we can use a more sofisiticated check with nltk.
+      """
+      p = inflect.engine() #Test external package
+      if word.endswith('s'):
+        return True
+      return False
