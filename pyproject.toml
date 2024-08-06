@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "dbt-opiner-custom-opinions"
+version = "0.1.0"
+description = "Custom opinions for dbt opiner"
+authors=["John Smith <john@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+loguru = "^0.7.2"
+dbt-opiner = {git = "https://github.com/rloredo/dbt-opiner.git"}
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2"
+pytest = "^7.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
