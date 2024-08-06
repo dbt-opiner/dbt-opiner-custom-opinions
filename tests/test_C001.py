@@ -24,6 +24,7 @@ def mock_sqlfilehandler(request):
     pytest.param(('facts', 'fact_sales', 'model', True), True, id='valid_fact'),
     pytest.param(('facts', 'fact_sale', 'model', False), False, id='invalid_fact_singular'),
     pytest.param(('dimensions', 'dim_customer', 'model', False), False, id='invalid_dimension_singular'),
+    pytest.param(('staging', 'stg_customer', 'model', False), False, id='valid_staging_singular'),
 ], indirect=['mock_sqlfilehandler'])
 def test_C001(mock_sqlfilehandler, expected_passed):
     mock_handler, expected_passed = mock_sqlfilehandler

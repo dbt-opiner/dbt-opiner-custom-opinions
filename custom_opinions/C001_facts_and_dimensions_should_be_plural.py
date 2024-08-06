@@ -1,3 +1,4 @@
+import re
 from dbt_opiner.opinions.base_opinion import BaseOpinion
 from dbt_opiner.linter import LintResult, OpinionSeverity
 from dbt_opiner.file_handlers import SQLFileHandler
@@ -14,14 +15,15 @@ class C001(BaseOpinion):
 
     def _eval(self, file: SQLFileHandler) -> LintResult:
         if file.dbt_node.alias:
-            if self.is_plural(file.dbt_node.alias):
-                return LintResult(
-                    file=file,
-                    opinion_code=self.code,
-                    passed=True,
-                    severity=self.severity,
-                    message="Facts and dimensions are plural.",
-                )
+          if self.is_fact_or_dim(file.dbt_node.schema):
+              if self.is_plural(file.dbt_node.alias):
+                  return LintResult(
+                      file=file,
+                      opinion_code=self.code,
+                      passed=True,
+                      severity=self.severity,
+                      message="Facts and dimensions are plural.",
+                  )
         return LintResult(
             file=file,
             opinion_code=self.code,
@@ -38,4 +40,10 @@ class C001(BaseOpinion):
       """
       if word.endswith('s'):
         return True
+      return False
+    
+    @staticmethod
+    def is_fact_or_dim(schema):
+      if re.match(r'.*(fact|dimension).*', schema):
+           return True
       return False
