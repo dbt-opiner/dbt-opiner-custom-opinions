@@ -1,4 +1,3 @@
-import inflect
 from dbt_opiner.opinions.base_opinion import BaseOpinion
 from dbt_opiner.linter import LintResult, OpinionSeverity
 from dbt_opiner.file_handlers import SQLFileHandler
@@ -37,7 +36,6 @@ class C001(BaseOpinion):
       For now use a simple check for s at the end of the word.
       In the future we can use a more sofisiticated check with nltk.
       """
-      p = inflect.engine() #Test external package
       if word.endswith('s'):
         return True
       return False
