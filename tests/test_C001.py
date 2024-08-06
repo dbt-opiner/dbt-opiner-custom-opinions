@@ -32,8 +32,8 @@ def mock_sqlfilehandler(request):
             id="invalid_dimension_singular",
         ),
         pytest.param(
-            ("staging", "stg_customer", "model", False),
-            False,
+            ("staging", "stg_customer", "model", True),
+            True,
             id="valid_staging_singular",
         ),
     ],
