@@ -30,25 +30,3 @@ def test_C001(mock_sqlfilehandler, expected_passed):
     opinion = C001()
     result = opinion.check_opinion(mock_handler)
     assert result.passed == expected_passed
-
-"""
-@pytest.fixture
-def mock_sqlfilehandler():
-    mock_handler = create_autospec(SQLFileHandler)
-    mock_handler.file_type = ".sql"
-    mock_handler.dbt_node = DbtNode(
-       {'database': 'customers', 'schema': 'main_dimensions', 'name': 'dim_customers', 'resource_type': 'model'}
-    )
-    return mock_handler
-
-def test_C001(mock_sqlfilehandler):
-    opinion = C001()
-    result = opinion.check_opinion(mock_sqlfilehandler)
-    assert result == LintResult(
-        file=mock_sqlfilehandler,
-        opinion_code="C001",
-        passed=False,
-        severity=OpinionSeverity.SHOULD,
-        message=f"Facts and dimensions {OpinionSeverity.SHOULD.value} be plural.",
-    )
-"""
