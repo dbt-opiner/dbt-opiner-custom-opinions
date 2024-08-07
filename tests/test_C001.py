@@ -14,8 +14,7 @@ from custom_opinions.C001_facts_and_dimensions_should_be_plural import C001
                         "alias": "dim_customers",
                         "resource_type": "model",
                     }
-                ),
-                True,
+                )
             ),
             True,
             id="valid_dimension",
@@ -23,9 +22,10 @@ from custom_opinions.C001_facts_and_dimensions_should_be_plural import C001
         pytest.param(
             (
                 DbtNode(
-                    {"schema": "facts", "alias": "fact_sales", "resource_type": "model"}
-                ),
-                True,
+                    {"schema": "facts", 
+                     "alias": "fact_sales", 
+                     "resource_type": "model"}
+                )
             ),
             True,
             id="valid_fact",
@@ -33,9 +33,10 @@ from custom_opinions.C001_facts_and_dimensions_should_be_plural import C001
         pytest.param(
             (
                 DbtNode(
-                    {"schema": "facts", "alias": "fact_sale", "resource_type": "model"}
-                ),
-                False,
+                    {"schema": "facts", 
+                     "alias": "fact_sale", 
+                     "resource_type": "model"}
+                )
             ),
             False,
             id="invalid_fact_singular",
@@ -48,8 +49,7 @@ from custom_opinions.C001_facts_and_dimensions_should_be_plural import C001
                         "alias": "dim_customer",
                         "resource_type": "model",
                     }
-                ),
-                False,
+                )
             ),
             False,
             id="invalid_dimension_singular",
@@ -62,8 +62,7 @@ from custom_opinions.C001_facts_and_dimensions_should_be_plural import C001
                         "alias": "stg_customer",
                         "resource_type": "model",
                     }
-                ),
-                True,
+                )
             ),
             True,
             id="valid_staging_singular",
@@ -72,7 +71,6 @@ from custom_opinions.C001_facts_and_dimensions_should_be_plural import C001
     indirect=["mock_sqlfilehandler"],
 )
 def test_C001(mock_sqlfilehandler, expected_passed):
-    mock_handler, expected_passed = mock_sqlfilehandler
     opinion = C001()
-    result = opinion.check_opinion(mock_handler)
+    result = opinion.check_opinion(mock_sqlfilehandler)
     assert result.passed == expected_passed
