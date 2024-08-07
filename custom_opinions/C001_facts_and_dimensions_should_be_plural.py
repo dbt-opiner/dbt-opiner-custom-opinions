@@ -5,7 +5,7 @@ from dbt_opiner.file_handlers import SQLFileHandler
 
 
 class C001(BaseOpinion):
-    def __init__(self):
+    def __init__(self, config: dict = None):
         super().__init__(
             code="C001",
             description="Facts and dimensions should be plural.",
