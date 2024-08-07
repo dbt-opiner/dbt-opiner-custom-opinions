@@ -16,14 +16,16 @@ class C001(BaseOpinion):
 
     def _eval(self, file: SQLFileHandler) -> LintResult:
         if file.dbt_node.alias:
-            if self.is_fact_or_dim(file.dbt_node.schema) and self.is_plural(file.dbt_node.alias):
-                    return LintResult(
-                        file=file,
-                        opinion_code=self.code,
-                        passed=True,
-                        severity=self.severity,
-                        message="Facts and dimensions are plural.",
-                    )
+            if self.is_fact_or_dim(file.dbt_node.schema) and self.is_plural(
+                file.dbt_node.alias
+            ):
+                return LintResult(
+                    file=file,
+                    opinion_code=self.code,
+                    passed=True,
+                    severity=self.severity,
+                    message="Facts and dimensions are plural.",
+                )
             if not self.is_fact_or_dim(file.dbt_node.schema):
                 return LintResult(
                     file=file,
@@ -32,7 +34,7 @@ class C001(BaseOpinion):
                     severity=self.severity,
                     message="Not a fact or dimension.",
                 )
-            
+
         return LintResult(
             file=file,
             opinion_code=self.code,
