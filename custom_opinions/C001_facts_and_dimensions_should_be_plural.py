@@ -5,6 +5,7 @@ from dbt_opiner.file_handlers import SQLFileHandler
 
 
 class C001(BaseOpinion):
+    required_packages = ["numpy==2.0.1"] # For testing purposes.
     def __init__(self, config: dict = None):
         super().__init__(
             code="C001",
