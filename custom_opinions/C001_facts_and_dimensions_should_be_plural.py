@@ -16,6 +16,8 @@ class C001(BaseOpinion):
         )
 
     def _eval(self, file: SQLFileHandler) -> LintResult:
+        import numpy as np
+        t = np.array([1, 2, 3])
         if file.dbt_node.alias:
             if self.is_fact_or_dim(file.dbt_node.schema) and self.is_plural(
                 file.dbt_node.alias

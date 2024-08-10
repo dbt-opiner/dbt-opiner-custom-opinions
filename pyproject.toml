@@ -9,6 +9,7 @@ python = ">=3.10,<3.13"
 loguru = "^0.7.2"
 dbt-opiner = {git = "https://github.com/rloredo/dbt-opiner.git"}
 inflect = "^7.3.1"
+numpy = "^2.0.1"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2"
