@@ -5,19 +5,23 @@ from dbt_opiner.file_handlers import SQLFileHandler
 
 
 class C001(BaseOpinion):
-    required_packages = ["numpy==2.0.1"] # For testing purposes.
-    def __init__(self, config: dict = None):
+    required_packages = ["numpy==2.0.1"] # TODO: For testing purposes. Remove
+    def __init__(self, **kwargs):
         super().__init__(
             code="C001",
             description="Facts and dimensions should be plural.",
             severity=OpinionSeverity.SHOULD,
-            applies_to_file_type=".sql",
-            applies_to_node_type="model",
         )
 
     def _eval(self, file: SQLFileHandler) -> LintResult:
+        # Check type of file and model.
+        if file.type != ".sql" or file.dbt_node.resource_type != "model":
+            return None
+        
+        # TODO: remove
         import numpy as np
         t = np.array([1, 2, 3])
+        
         if file.dbt_node.alias:
             if self.is_fact_or_dim(file.dbt_node.schema) and self.is_plural(
                 file.dbt_node.alias

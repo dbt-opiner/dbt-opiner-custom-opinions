@@ -1,5 +1,5 @@
 import pytest
-from dbt_opiner.dbt_artifacts import DbtNode
+from dbt_opiner.dbt import DbtNode
 from custom_opinions.C001_facts_and_dimensions_should_be_plural import C001
 
 
