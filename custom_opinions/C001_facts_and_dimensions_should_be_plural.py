@@ -15,7 +15,7 @@ class C001(BaseOpinion):
 
     def _eval(self, file: SQLFileHandler) -> LintResult:
         # Check type of file and model.
-        if file.type != ".sql" or file.dbt_node.resource_type != "model":
+        if file.type != ".sql" or file.dbt_node.type != "model":
             return None
         
         # TODO: remove
