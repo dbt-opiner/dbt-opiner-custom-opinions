@@ -5,7 +5,8 @@ from dbt_opiner.file_handlers import SqlFileHandler
 
 
 class C001(BaseOpinion):
-    required_packages = ["numpy==2.0.1"] # TODO: For testing purposes. Remove
+    required_packages = ["numpy==2.0.1"]  # TODO: For testing purposes. Remove
+
     def __init__(self, **kwargs):
         super().__init__(
             code="C001",
@@ -17,11 +18,12 @@ class C001(BaseOpinion):
         # Check type of file and model.
         if file.type != ".sql" or file.dbt_node.type != "model":
             return None
-        
+
         # TODO: remove
         import numpy as np
-        t = np.array([1, 2, 3])
-        
+
+        t = np.array([1, 2, 3])  # noqa
+
         if file.dbt_node.alias:
             if self.is_fact_or_dim(file.dbt_node.schema) and self.is_plural(
                 file.dbt_node.alias

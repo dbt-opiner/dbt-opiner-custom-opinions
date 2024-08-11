@@ -22,9 +22,7 @@ from custom_opinions.C001_facts_and_dimensions_should_be_plural import C001
         pytest.param(
             (
                 DbtNode(
-                    {"schema": "facts", 
-                     "alias": "fact_sales", 
-                     "resource_type": "model"}
+                    {"schema": "facts", "alias": "fact_sales", "resource_type": "model"}
                 )
             ),
             True,
@@ -33,9 +31,7 @@ from custom_opinions.C001_facts_and_dimensions_should_be_plural import C001
         pytest.param(
             (
                 DbtNode(
-                    {"schema": "facts", 
-                     "alias": "fact_sale", 
-                     "resource_type": "model"}
+                    {"schema": "facts", "alias": "fact_sale", "resource_type": "model"}
                 )
             ),
             False,
