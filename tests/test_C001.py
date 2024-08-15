@@ -69,4 +69,7 @@ from custom_opinions.C001_facts_and_dimensions_should_be_plural import C001
 def test_C001(mock_sqlfilehandler, expected_passed):
     opinion = C001()
     result = opinion.check_opinion(mock_sqlfilehandler)
-    assert result.passed == expected_passed
+    if result:
+        assert result.passed == expected_passed
+    else:
+        assert expected_passed

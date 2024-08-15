@@ -163,3 +163,7 @@ cython_debug/
 
 # Ruff cache
 .ruff_cache/
+
+# Coverage
+pytest-coverage.txt
+pytest.xml

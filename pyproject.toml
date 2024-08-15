@@ -2,18 +2,22 @@
 name = "dbt-opiner-custom-opinions"
 version = "0.1.0"
 description = "Custom opinions for dbt opiner"
-authors=["John Smith <john@example.com>"]
+authors=["Rodrigo Loredo <loredo.rod@gmail.com>"]
+license = "MIT"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
 loguru = "^0.7.2"
-dbt-opiner = {git = "https://github.com/rloredo/dbt-opiner.git"}
-inflect = "^7.3.1"
-numpy = "^2.0.1"
+dbt-opiner = "^0.1.0b0"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2"
 pytest = "^7.4"
+pytest-xdist = "^3.6.1"
+
+[tool.poetry.group.test.dependencies]
+pytest-cov = "^4.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
