@@ -1,7 +1,6 @@
 from unittest.mock import create_autospec
 
 import pytest
-
 from dbt_opiner.file_handlers import SqlFileHandler
 from dbt_opiner.file_handlers import YamlFileHandler
 

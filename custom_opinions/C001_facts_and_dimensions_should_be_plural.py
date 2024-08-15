@@ -1,8 +1,10 @@
 import re
-from loguru import logger
-from dbt_opiner.opinions.base_opinion import BaseOpinion
-from dbt_opiner.linter import LintResult, OpinionSeverity
+
 from dbt_opiner.file_handlers import SqlFileHandler
+from dbt_opiner.linter import LintResult
+from dbt_opiner.linter import OpinionSeverity
+from dbt_opiner.opinions.base_opinion import BaseOpinion
+from loguru import logger
 
 
 class C001(BaseOpinion):
