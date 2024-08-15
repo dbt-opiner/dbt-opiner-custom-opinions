@@ -1,4 +1,4 @@
-name: pre_commit_and_pytest_flow
+name: Pre-commit and Pytest flow
 
 on:
     pull_request:
@@ -13,7 +13,7 @@ permissions:
 jobs:
     pytest_flow:
         name: |
-            Pre-commit and Pytest workflow - Python: ${{ matrix.python-version }}
+            Pre-commit and Pytest flow - Python: ${{ matrix.python-version }}
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -45,13 +45,7 @@ jobs:
 
             - name: Install dependencies
               if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-              run: poetry install --no-interaction --no-ansi
-
-      # Necessary as previous step may have a cached venv
-            - name: Install dbt-opiner
-              run: |
-                  source .venv/bin/activate
-                  pip install -e .
+              run: poetry install --no-interaction --no-ansi --no-root
 
             - name: pre-commit
               run: |
