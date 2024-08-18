@@ -60,9 +60,7 @@ class C001(BaseOpinion):
                 logger.debug("Not a fact or dimension.")
                 return None
 
-            if self.is_fact_or_dim(file.dbt_node) and self.is_plural(
-                file.dbt_node.alias
-            ):
+            if self.is_plural(file.dbt_node.alias):
                 return LintResult(
                     file=file,
                     opinion_code=self.code,
