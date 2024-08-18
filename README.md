@@ -9,5 +9,5 @@ opinions_config:
   custom_opinions:
     source: git
     repository: https://github.com/dbt-opiner/dbt-opiner-custom-opinions.git
-    rev: 0.1.0
+    rev: # Use a commit hash for now until the first stable release.
 ```
