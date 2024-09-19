@@ -1,7 +1,7 @@
 import pytest
 from dbt_opiner.dbt import DbtNode
 
-from custom_opinions.C001_facts_and_dimensions_should_be_plural import C001
+from custom_opinions.M001_facts_and_dimensions_should_be_plural import M001
 
 
 @pytest.mark.parametrize(
@@ -67,8 +67,8 @@ from custom_opinions.C001_facts_and_dimensions_should_be_plural import C001
     ],
     indirect=["mock_sqlfilehandler"],
 )
-def test_C001(mock_sqlfilehandler, expected_passed):
-    opinion = C001()
+def test_M001(mock_sqlfilehandler, expected_passed):
+    opinion = M001()
     result = opinion.check_opinion(mock_sqlfilehandler)
     if result:
         assert result.passed == expected_passed

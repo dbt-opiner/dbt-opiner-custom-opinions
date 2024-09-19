@@ -1,4 +1,4 @@
-"""Model column descriptions should use the `docs` macro.
+"""Model column descriptions must use the `docs` macro.
 
 The `doc` macro is a dbt feature that allows you to re-use documentation.
 It is useful for models that share the same columns (e.g. user_id),
