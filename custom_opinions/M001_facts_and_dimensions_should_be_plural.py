@@ -7,7 +7,7 @@ from dbt_opiner.opinions.base_opinion import BaseOpinion
 from loguru import logger
 
 
-class C001(BaseOpinion):
+class M001(BaseOpinion):
     """Facts and dimensions model names should be plural.
 
     The name of a fact or a dimension should make the content of the table obvious.
