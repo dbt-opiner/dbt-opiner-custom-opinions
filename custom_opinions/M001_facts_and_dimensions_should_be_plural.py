@@ -48,7 +48,7 @@ class M001(BaseOpinion):
         self._config = (
             config.get("opinions_config", {})
             .get("extra_opinions_config", {})
-            .get("C001", {})
+            .get("M001", {})
         )
 
     def _eval(self, file: SqlFileHandler) -> LintResult:
