@@ -9,7 +9,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
 loguru = "^0.7.2"
-dbt-opiner = "^0.1.0"
+dbt-opiner = "^0.3.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest-cov = "^4.1"
